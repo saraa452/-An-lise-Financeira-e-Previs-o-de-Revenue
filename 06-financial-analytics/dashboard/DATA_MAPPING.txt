@@ -1,0 +1,294 @@
+// Power BI - Mapeamento de Arquivos de Dados
+// Criado em: Novembro 2025
+
+============================================
+ESTRUTURA DE DADOS PARA IMPORTAÇÃO NO POWER BI
+============================================
+
+PASTA: data/processed/
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 1. FINANCIAL_METRICS.CSV - Métricas Financeiras Consolidadas        │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Trimestral                                              │
+│ Período: Q1 2022 - Q3 2025                                          │
+│ Registros: 15 trimestres                                            │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • period [TEXT]: Ex: 2022-Q1                                       │
+│  • date [DATE]: Data de encerramento do trimestre                   │
+│  • revenue [CURRENCY]: Receita total                                │
+│  • net_income [CURRENCY]: Lucro líquido                             │
+│  • gross_profit [CURRENCY]: Lucro bruto                             │
+│  • operating_income [CURRENCY]: Lucro operacional                   │
+│  • total_assets [CURRENCY]: Total de ativos                         │
+│  • current_assets [CURRENCY]: Ativos circulantes                    │
+│  • total_debt [CURRENCY]: Dívida total                              │
+│  • shareholders_equity [CURRENCY]: Patrimônio líquido               │
+│  • current_ratio [DECIMAL]: Índice de liquidez corrente             │
+│  • quick_ratio [DECIMAL]: Índice de liquidez seca                   │
+│  • profit_margin [PERCENT]: Margem de lucro                         │
+│  • roa [PERCENT]: Retorno sobre ativos                              │
+│  • roe [PERCENT]: Retorno sobre patrimônio                          │
+│  • debt_to_equity [DECIMAL]: Índice de alavancagem                  │
+│  • asset_turnover [DECIMAL]: Giro do ativo                          │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Gráfico de Linha: Revenue, Net Income (com linha dupla)         │
+│  → Gráfico de Coluna: Margens (Gross, Operating)                   │
+│  → Card: KPIs atuais (ROE, ROA, Current Ratio)                     │
+│  → Medidor: Comparação com alvo                                     │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 2. REVENUE_FORECAST_DATA.CSV - Previsões de Receita                 │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Trimestral                                              │
+│ Período: Q4 2025 - Q4 2026                                          │
+│ Registros: 5 trimestres                                             │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • quarter [TEXT]: Ex: Q1 2026                                      │
+│  • forecast_date [DATE]: Data da previsão                           │
+│  • moving_average_forecast [CURRENCY]: Previsão MA(3)              │
+│  • exponential_smoothing_forecast [CURRENCY]: Previsão ES          │
+│  • linear_regression_forecast [CURRENCY]: Previsão LR              │
+│  • consensus_forecast [CURRENCY]: Média dos 3 modelos             │
+│  • lower_confidence_bound [CURRENCY]: IC inferior (95%)             │
+│  • upper_confidence_bound [CURRENCY]: IC superior (95%)             │
+│  • confidence_level [TEXT]: Nível de confiança                      │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Gráfico de Área: Intervalo de confiança (IC inferior/superior)  │
+│  → Gráfico de Linha: 3 modelos + Consenso                          │
+│  → Tabela: Comparação dos modelos                                   │
+│  → Card: Previsão de Consenso para próximo Q                       │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 3. SALES_PERFORMANCE.CSV - Performance de Vendas                    │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Mensal                                                  │
+│ Período: Jan 2024 - Out 2024                                        │
+│ Registros: 30 (10 meses × 3 linhas de produto)                     │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • month [TEXT]: Ex: 2024-01                                        │
+│  • product_line [TEXT]: Produto A, B ou C                           │
+│  • region [TEXT]: North, South ou East                              │
+│  • units_sold [INTEGER]: Quantidade de unidades                     │
+│  • revenue [CURRENCY]: Receita de vendas                            │
+│  • cost_of_goods_sold [CURRENCY]: COGS                              │
+│  • gross_profit [CURRENCY]: Lucro bruto                             │
+│  • gross_margin_percent [PERCENT]: Margem bruta %                   │
+│  • year_month [TEXT]: Formatado para agrupamento                    │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Gráfico de Coluna: Revenue por Produto                           │
+│  → Gráfico de Coluna Empilhada: Revenue por Região                 │
+│  → Matriz: Produto vs Região (Valores de Receita)                   │
+│  → Slicer: Product Line, Region para filtros interativos            │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 4. PROFITABILITY_ANALYSIS.CSV - Análise de Rentabilidade            │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Trimestral                                              │
+│ Período: Q1 2022 - Q3 2025                                          │
+│ Registros: 15 trimestres                                            │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • period [TEXT]: Ex: 2022-Q1                                       │
+│  • date [DATE]: Data de encerramento                                │
+│  • revenue [CURRENCY]: Receita                                      │
+│  • cogs [CURRENCY]: Custo de bens vendidos                          │
+│  • gross_profit [CURRENCY]: Lucro bruto                             │
+│  • gross_margin_percent [PERCENT]: Margem bruta %                   │
+│  • operating_expenses [CURRENCY]: Despesas operacionais             │
+│  • operating_income [CURRENCY]: Lucro operacional                   │
+│  • operating_margin_percent [PERCENT]: Margem operacional %         │
+│  • net_income [CURRENCY]: Lucro líquido                             │
+│  • net_margin_percent [PERCENT]: Margem líquida %                   │
+│  • ebitda [CURRENCY]: EBITDA                                        │
+│  • ebitda_margin_percent [PERCENT]: Margem EBITDA %                 │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Gráfico de Linha Múltipla: 3 margens (Bruta, Op, Líquida)      │
+│  → Gráfico de Waterfall: Da Receita ao Lucro Líquido               │
+│  → Card: Margem Líquida Atual                                       │
+│  → Gráfico de Coluna: Evolução de EBITDA                           │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 5. REGIONAL_ANALYSIS.CSV - Análise Regional                         │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Mensal                                                  │
+│ Período: Jan 2024 - Out 2024                                        │
+│ Registros: 30 (10 meses × 3 regiões)                               │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • month [TEXT]: Ex: 2024-01                                        │
+│  • date [DATE]: Primeira do mês                                     │
+│  • region [TEXT]: North, South ou East                              │
+│  • units_sold [INTEGER]: Unidades vendidas                          │
+│  • revenue [CURRENCY]: Receita regional                             │
+│  • avg_price_per_unit [CURRENCY]: Preço médio unitário              │
+│  • market_share_percent [PERCENT]: Market share %                   │
+│  • growth_rate_percent [PERCENT]: Taxa de crescimento %             │
+│  • year_month [TEXT]: Agrupamento temporal                          │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Mapa: Revenue por Região (se configurado com geometria)         │
+│  → Gráfico de Rosca: Market Share por Região                        │
+│  → Tabela: Detalhe por Região e Mês                                 │
+│  → Gráfico de Linha: Crescimento regional ao longo do tempo         │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 6. MARKET_INDICATORS.CSV - Indicadores de Mercado                   │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Mensal                                                  │
+│ Período: Jan 2023 - Nov 2024                                        │
+│ Registros: 23 meses                                                 │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • month [TEXT]: Ex: 2023-01                                        │
+│  • date [DATE]: Última do mês                                       │
+│  • market_index [DECIMAL]: Índice de mercado                        │
+│  • interest_rate [PERCENT]: Taxa de juros %                         │
+│  • inflation_rate [PERCENT]: Taxa de inflação %                     │
+│  • consumer_confidence [DECIMAL]: Índice de confiança               │
+│  • market_sector_performance [DECIMAL]: Performance do setor        │
+│  • gdp_growth_percent [PERCENT]: Crescimento PIB %                  │
+│  • unemployment_rate [PERCENT]: Taxa de desemprego %                │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Gráfico de Linha Dupla: Market Index vs Company Revenue         │
+│  → Gráfico de Linha: Inflation vs Interest Rate                     │
+│  → Gráfico de Coluna: Consumer Confidence vs Company Sales         │
+│  → Tabela: Dashboard Macro Econômico                                │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 7. KPI_DASHBOARD.CSV - Dashboard de KPIs Executivo                  │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Snapshot (atualizar conforme necessário)               │
+│ Registros: 20 KPIs principais                                       │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • kpi_name [TEXT]: Nome do indicador                               │
+│  • metric_type [TEXT]: Tipo (Financial, Sales, Liquidity, etc)     │
+│  • current_value [CURRENCY/DECIMAL]: Valor atual                    │
+│  • target_value [CURRENCY/DECIMAL]: Valor alvo                      │
+│  • previous_value [CURRENCY/DECIMAL]: Valor anterior                │
+│  • variance_percent [PERCENT]: Variação %                           │
+│  • trend [TEXT]: Upward, Downward, Stable                           │
+│  • status [TEXT]: On Track, Good, Healthy, etc                      │
+│  • last_updated [DATE]: Última atualização                          │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Card: Total Revenue (com indicador de trend)                     │
+│  → Card: Net Income (com % de variância)                            │
+│  → Card: Current Ratio (com status de saúde)                        │
+│  → Tabela: KPIs completo com todos os indicadores                   │
+│  → Medidores: Comparação Atual vs Alvo                              │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 8. BALANCE_SHEET.CSV - Balanço Patrimonial                          │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Trimestral                                              │
+│ Período: Q1 2022 - Q3 2025                                          │
+│ Registros: 15 trimestres                                            │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • period [TEXT]: Ex: 2022-Q1                                       │
+│  • date [DATE]: Data de encerramento                                │
+│  • current_assets [CURRENCY]: Ativos circulantes                    │
+│  • fixed_assets [CURRENCY]: Ativos fixos                            │
+│  • total_assets [CURRENCY]: Total ativos                            │
+│  • current_liabilities [CURRENCY]: Passivos circulantes             │
+│  • long_term_debt [CURRENCY]: Dívida de longo prazo                 │
+│  • total_liabilities [CURRENCY]: Total passivos                     │
+│  • shareholders_equity [CURRENCY]: Patrimônio líquido               │
+│  • retained_earnings [CURRENCY]: Lucros retidos                     │
+│  • common_stock [CURRENCY]: Capital social                          │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Gráfico de Coluna Empilhada: Ativos (Circulantes + Fixos)      │
+│  → Gráfico de Coluna Empilhada: Passivos + PL                      │
+│  → Linha: Evolução de Total Assets e Shareholders Equity            │
+│  → Tabela: Balanço patrimonial completo                             │
+└─────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────┐
+│ 9. INCOME_STATEMENT.CSV - Demonstração de Resultados                │
+├─────────────────────────────────────────────────────────────────────┤
+│ Frequência: Trimestral                                              │
+│ Período: Q1 2022 - Q3 2025                                          │
+│ Registros: 15 trimestres                                            │
+├─────────────────────────────────────────────────────────────────────┤
+│ COLUNAS DISPONÍVEIS:                                                │
+│  • period [TEXT]: Ex: 2022-Q1                                       │
+│  • date [DATE]: Data de encerramento                                │
+│  • revenue [CURRENCY]: Receita total                                │
+│  • cost_of_goods_sold [CURRENCY]: Custo de bens vendidos            │
+│  • gross_profit [CURRENCY]: Lucro bruto                             │
+│  • selling_general_admin [CURRENCY]: Despesas SG&A                  │
+│  • research_development [CURRENCY]: Despesas P&D                    │
+│  • operating_income [CURRENCY]: Lucro operacional                   │
+│  • interest_expense [CURRENCY]: Despesa com juros                   │
+│  • other_income [CURRENCY]: Outras receitas                         │
+│  • income_before_tax [CURRENCY]: Lucro antes de IR                  │
+│  • income_tax_expense [CURRENCY]: Despesa com IR                    │
+│  • net_income [CURRENCY]: Lucro líquido                             │
+│  • earnings_per_share [DECIMAL]: Lucro por ação                     │
+├─────────────────────────────────────────────────────────────────────┤
+│ RECOMENDAÇÕES DE VISUALIZAÇÃO:                                      │
+│  → Gráfico de Waterfall: Da Receita ao Lucro Líquido               │
+│  → Gráfico de Coluna: Revenue vs Operating Income vs Net Income    │
+│  → Tabela: DRE completa                                             │
+│  → Linha: Trend de EPS                                              │
+└─────────────────────────────────────────────────────────────────────┘
+
+============================================
+RELACIONAMENTOS RECOMENDADOS ENTRE TABELAS
+============================================
+
+financial_metrics [date] ←→ profitability_analysis [date]
+financial_metrics [date] ←→ balance_sheet [date]
+financial_metrics [date] ←→ income_statement [date]
+
+sales_performance [month] ←→ regional_analysis [month]
+
+market_indicators [date] ←→ financial_metrics [date] (esquerda externa)
+
+revenue_forecast_data [quarter] (tabela de dimensão de período)
+
+============================================
+FORMATO DE DADOS ESPERADO
+============================================
+
+CURRENCY: Valores monetários em USD (ex: 1000000)
+DECIMAL: Números decimais (ex: 1.75, 3.45)
+PERCENT: Percentuais já em decimal (ex: 15.00 = 15%, 3.5 = 3.5%)
+DATE: Formato ISO YYYY-MM-DD (ex: 2025-09-30)
+TEXT: Texto livre (ex: "North", "Product A")
+INTEGER: Números inteiros (ex: 15000)
+
+============================================
+DICAS DE OTIMIZAÇÃO NO POWER BI
+============================================
+
+1. Use Power Query para limpeza adicional se necessário
+2. Crie uma tabela de Calendário (dimensão de tempo)
+3. Adicione colunas calculadas para análises adicionais
+4. Use medidas DAX para KPIs dinâmicos
+5. Implemente filtros globais em cada página
+6. Padronize cores e formatação entre visualizações
+7. Use tooltips para informações adicionais
+8. Crie bookmarks para diferentes cenários de análise
+
+============================================
+Data criado: Novembro 2025
+============================================

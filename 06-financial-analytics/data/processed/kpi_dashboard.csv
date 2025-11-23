@@ -1,0 +1,21 @@
+kpi_name,metric_type,current_value,target_value,previous_value,variance_percent,trend,status,last_updated
+Total Revenue,Financial,2080000,2200000,1995000,4.25,Upward,On Track,2025-09-30
+Net Income,Financial,312000,330000,299250,4.25,Upward,On Track,2025-09-30
+Gross Margin %,Financial,40.00,40.50,40.00,0.00,Stable,On Track,2025-09-30
+Operating Margin %,Financial,20.00,21.00,20.00,0.00,Stable,On Track,2025-09-30
+Current Ratio,Liquidity,1.78,1.50,1.76,18.67,Upward,Healthy,2025-09-30
+Quick Ratio,Liquidity,1.41,1.20,1.39,17.50,Upward,Healthy,2025-09-30
+Debt-to-Equity,Leverage,0.73,0.80,0.73,0.00,Stable,Conservative,2025-09-30
+ROA %,Profitability,4.88,5.00,4.75,2.74,Upward,Good,2025-09-30
+ROE %,Profitability,8.43,8.50,8.20,2.81,Upward,Good,2025-09-30
+Asset Turnover,Efficiency,0.33,0.35,0.32,3.13,Upward,Improving,2025-09-30
+Product A Revenue,Sales,1350000,1450000,1350000,0.00,Stable,On Track,2024-10-31
+Product B Revenue,Sales,950000,1050000,900000,5.56,Upward,Good,2024-10-31
+Product C Revenue,Sales,495000,550000,465000,6.45,Upward,Good,2024-10-31
+North Region Revenue,Sales,1425000,1500000,1400000,1.79,Upward,On Track,2024-10-31
+South Region Revenue,Sales,950000,1050000,900000,5.56,Upward,Good,2024-10-31
+East Region Revenue,Sales,495000,550000,465000,6.45,Upward,Good,2024-10-31
+Market Index,External,5945,6200,5890,0.93,Upward,Growing,2024-11-30
+Consumer Confidence,External,109.3,110.0,108.9,0.37,Upward,Strong,2024-11-30
+Inflation Rate %,External,2.71,2.50,2.60,4.23,Stable,Acceptable,2024-11-30
+Interest Rate %,External,4.25,4.00,4.25,6.25,Downward,Favorable,2024-11-30
